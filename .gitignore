@@ -42,6 +42,7 @@ Thumbs.db
 
 # Qodana
 .qodana/
+qodana-results/
 
 # Secrets and credentials — never commit
 *.pem

@@ -1,6 +1,6 @@
 version: "1.0"
 
-linter: jetbrains/qodana-python-community:latest
+linter: jetbrains/qodana-python-community:2026.1
 
 profile:
   name: qodana.recommended
@@ -19,6 +19,28 @@ exclude:
       - .mypy_cache
       - htmlcov
       - __pycache__
+      - scripts
+
+  # mypy strict already validates type hints; Qodana's analysis
+  # has known limitations with SQLAlchemy Mapped[] and Pydantic generics.
+  - name: PyTypeHintsInspection
+
+  # dataclasses, Pydantic BaseModel, and SQLAlchemy declarative models
+  # legitimately omit __init__.
+  - name: PyClassHasNoInitInspection
+
+  # Services intentionally use _db (protected) for dependency injection.
+  - name: PyProtectedMemberInspection
+
+  # FastAPI injects Request and other params that handlers may not use directly.
+  - name: PyUnusedLocalInspection
+
+  # `app` shadowing is standard FastAPI convention; `token` param shadowing
+  # is required by the OAuth 2.0 spec parameter names.
+  - name: PyShadowingNamesInspection
+
+  # Instance methods kept for API consistency and future extensibility.
+  - name: PyMethodMayBeStaticInspection
 
 include:
   - name: CheckDependencyLicenses
