@@ -1,0 +1,24 @@
+version: "1.0"
+
+linter: jetbrains/qodana-python-community:latest
+
+profile:
+  name: qodana.recommended
+
+projectJDK: python-3.12
+
+exclude:
+  - name: All
+    paths:
+      - .venv
+      - .git
+      - .idea
+      - dist
+      - build
+      - .pytest_cache
+      - .mypy_cache
+      - htmlcov
+      - __pycache__
+
+include:
+  - name: CheckDependencyLicenses
