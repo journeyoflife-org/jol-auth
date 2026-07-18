@@ -1,16 +1,16 @@
-# JOL Repository Template
+# JOL Auth
 
-Enterprise-grade repository template for the **Journey of Life (JOL)** platform — serving approximately 400,000 religious institution websites across 27 EU member states.
+Authentication and identity management service for the **Journey of Life (JOL)** platform — serving approximately 400,000 religious institution websites across 27 EU member states.
 
 ## Purpose
 
-This template establishes the baseline structure, tooling configuration, and compliance scaffolding for all new JOL repositories. Every repository created from this template inherits:
+`jol-auth` is the central identity service in the JOL Shared Services Layer. It provides:
 
-- A CI/CD pipeline built on GitHub Actions
-- Security controls aligned with ISO 27001 and SOC 2
-- Privacy governance compatible with GDPR requirements
-- Automated code-quality enforcement via pre-commit hooks and Qodana
-- Dependabot-driven dependency updates routed through CODEOWNERS review
+- **OAuth 2.0 / OpenID Connect** token issuance and validation
+- **Multi-tenant RBAC** with per-institution isolation
+- **Short-lived credentials** for service-to-service communication
+- **Session management** with GDPR-compliant consent tracking
+- **Audit event emission** for all authentication operations
 
 ## Quick Start
 
@@ -33,31 +33,16 @@ pre-commit install
 ## Repository Structure
 
 ```
-├── README.md
-├── LICENSE
-├── SECURITY.md
-├── CONTRIBUTING.md
-├── CHANGELOG.md
-├── .gitignore
-├── .editorconfig
-├── Makefile
+├── src/
+│   └── jol_auth/          # Package source
+├── tests/                 # Test suite
+├── docs/
+│   ├── architecture.md
+│   └── DPIA-template.md
 ├── pyproject.toml
-├── qodana.yaml
-├── .pre-commit-config.yaml
-├── .github/
-│   ├── CODEOWNERS
-│   ├── dependabot.yml
-│   ├── PULL_REQUEST_TEMPLATE.md
-│   ├── ISSUE_TEMPLATE/
-│   │   ├── bug_report.yml
-│   │   └── feature_request.yml
-│   └── workflows/
-│       ├── ci.yml
-│       ├── compliance-check.yml
-│       └── codeql.yml
-└── docs/
-    ├── architecture.md
-    └── DPIA-template.md
+├── Makefile
+└── .github/
+    └── workflows/         # CI, compliance, CodeQL
 ```
 
 ## Compliance Baseline
