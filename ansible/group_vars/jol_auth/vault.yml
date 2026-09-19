@@ -1,0 +1,20 @@
+---
+# Ansible Vault — jol-auth database credentials
+# Encrypt with: ansible-vault encrypt ansible/group_vars/jol_auth/vault.yml
+# Decrypt with: ansible-vault view ansible/group_vars/jol_auth/vault.yml
+
+# Database passwords — ROTATE IMMEDIATELY
+# These are placeholder values. Generate new passwords with:
+#   openssl rand -base64 32
+# Then update the production database and this file.
+
+vault_jol_lt_db_password: "PLACEHOLDER_GENERATE_NEW_PASSWORD"  # pragma: allowlist secret
+vault_jol_identity_db_password: "PLACEHOLDER_GENERATE_NEW_PASSWORD"  # pragma: allowlist secret
+
+# Database users (not secrets, but centralized for consistency)
+vault_jol_lt_db_user: "jol_lt_app_user"
+vault_jol_identity_db_user: "jol_identity_user"
+
+# Database names
+vault_jol_lt_db_name: "jol_lt_platform_prod"
+vault_jol_identity_db_name: "jol_identity"
