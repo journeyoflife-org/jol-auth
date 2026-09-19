@@ -5,20 +5,20 @@
 # See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 
 # Default ownership — applied to all files not matched below.
-*                                   @journeyoflife-org/platform-core
+*                                   @journeyoflife-org/security
 
 # Security-sensitive paths require additional review.
-.github/workflows/                  @journeyoflife-org/platform-core @journeyoflife-org/security
-.github/CODEOWNERS                  @journeyoflife-org/platform-core @journeyoflife-org/security
-SECURITY.md                         @journeyoflife-org/platform-core @journeyoflife-org/security
+.github/workflows/                  @journeyoflife-org/security
+.github/CODEOWNERS                  @journeyoflife-org/security
+SECURITY.md                         @journeyoflife-org/security
 
 # Dependency management
-.github/dependabot.yml              @journeyoflife-org/platform-core
+.github/dependabot.yml              @journeyoflife-org/security
 
 # Infrastructure and configuration
-pyproject.toml                      @journeyoflife-org/platform-core
-qodana.yaml                         @journeyoflife-org/platform-core
-.pre-commit-config.yaml             @journeyoflife-org/platform-core
+pyproject.toml                      @journeyoflife-org/security
+qodana.yaml                         @journeyoflife-org/security
+.pre-commit-config.yaml             @journeyoflife-org/security
 
 # Documentation
-docs/                               @journeyoflife-org/platform-core @journeyoflife-org/docs
+docs/                               @journeyoflife-org/security @journeyoflife-org/devops

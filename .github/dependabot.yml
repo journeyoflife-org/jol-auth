@@ -11,7 +11,7 @@ updates:
     labels:
       - "dependencies"
       - "github-actions"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 5
 
   - package-ecosystem: "pip"
     directory: "/"
@@ -23,7 +23,7 @@ updates:
     labels:
       - "dependencies"
       - "python"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 5
     groups:
       dev-dependencies:
         dependency-type: "development"
