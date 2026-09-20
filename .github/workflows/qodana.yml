@@ -18,12 +18,12 @@ jobs:
 
     steps:
       - name: Checkout
-uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
         with:
           fetch-depth: 0
 
       - name: Qodana Scan
-uses: JetBrains/qodana-action@4861e015da555e86a72b862892aba6c2b93e6891  # v2026.1
+        uses: JetBrains/qodana-action@4861e015da555e86a72b862892aba6c2b93e6891  # v2026.1
         with:
           args: --fail-threshold,1
         env:
