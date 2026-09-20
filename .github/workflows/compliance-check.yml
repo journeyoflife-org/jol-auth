@@ -18,10 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
 
       - name: Check license headers
-        uses: apache/skywalking-eyes/header@v0.6.0
+uses: apache/skywalking-eyes/header@cd7b195c51fd3d6ad52afceb760719ddc6b3ee91  # v0.6.0
         with:
           mode: check
         continue-on-error: false
@@ -31,12 +31,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
         with:
           fetch-depth: 0
 
       - name: Run TruffleHog secret scanner
-        uses: trufflesecurity/trufflehog@main
+uses: trufflesecurity/trufflehog@288a8a8643a2c5a36b81d231c550dccfa0beeb64  # main
         with:
           extra_args: --only-verified
 
@@ -45,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
 
       - name: Verify required files exist
         run: |
