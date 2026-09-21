@@ -17,7 +17,6 @@ SECURITY.md                         @journeyoflife-org/security
 
 # Infrastructure and configuration
 pyproject.toml                      @journeyoflife-org/security
-qodana.yaml                         @journeyoflife-org/security
 .pre-commit-config.yaml             @journeyoflife-org/security
 
 # Documentation
