@@ -6,8 +6,12 @@ uv = "latest"
 UV_PROJECT_ENVIRONMENT = ".venv"
 
 [tasks.deps]
-description = "Create/refresh the isolated uv virtualenv from uv.lock"
-run = "uv sync --extra dev"
+description = "Create/refresh the isolated uv virtualenv strictly from uv.lock"
+run = "uv sync --frozen --extra dev"
+
+[tasks.lock-check]
+description = "Fail if uv.lock is out of sync with pyproject.toml"
+run = "uv lock --check"
 
 [tasks.lint]
 description = "Ruff lint + format check (mirrors CI Lint job)"

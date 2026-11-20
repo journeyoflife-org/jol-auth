@@ -49,7 +49,7 @@ jobs:
           version: "2026.11.0"
 
       - name: Install dependencies
-        run: mise install && mise run deps
+        run: mise install && mise run lock-check && mise run deps
 
       - name: Run Ruff linter and formatter check
         run: mise run lint
@@ -67,7 +67,7 @@ jobs:
           version: "2026.11.0"
 
       - name: Install dependencies
-        run: mise install && mise run deps
+        run: mise install && mise run lock-check && mise run deps
 
       - name: Run tests
         run: mise run test
@@ -85,7 +85,7 @@ jobs:
           version: "2026.11.0"
 
       - name: Install dependencies
-        run: mise install && mise run deps
+        run: mise install && mise run lock-check && mise run deps
 
       - name: Run pre-commit hooks
         run: mise run precommit
