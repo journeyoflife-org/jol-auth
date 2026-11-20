@@ -1,0 +1,76 @@
+# MIT License
+#
+# Copyright (c) 2024-2026 Journey of Life
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+name: Auth Feature Request
+description: Propose a new authentication or authorization feature
+title: "[auth-feature]: "
+labels: ["enhancement", "auth"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a feature. Please provide enough detail for the team to evaluate the proposal.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: What problem does this feature solve? Who is affected?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed Solution
+      description: Describe the proposed solution or approach.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: List any alternative approaches that were considered.
+    validations:
+      required: false
+  - type: dropdown
+    id: area
+    attributes:
+      label: Feature Area
+      options:
+        - OAuth 2.0 / OIDC
+        - Multi-tenant RBAC
+        - Session Management
+        - MFA
+        - Key Management / JWKS
+        - Audit / Compliance
+        - API Design
+        - Developer Experience
+        - Other
+    validations:
+      required: true
+  - type: checkboxes
+    id: compliance
+    attributes:
+      label: Compliance Impact
+      options:
+        - label: This feature processes new personal data categories
+        - label: This feature introduces a new data transfer path
+        - label: A DPIA update may be required (see docs/DPIA-template.md)

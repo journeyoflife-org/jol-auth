@@ -1,0 +1,83 @@
+# MIT License
+#
+# Copyright (c) 2024-2026 Journey of Life
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+name: Auth Bug Report
+description: Report a bug in the authentication or authorization system
+title: "[auth-bug]: "
+labels: ["bug", "auth"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting an auth bug. Please fill in the details below.
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Which environment is affected? (development / staging / production)
+    validations:
+      required: true
+  - type: input
+    id: tenant
+    attributes:
+      label: Tenant ID
+      description: The tenant ID where the issue was observed (if applicable).
+    validations:
+      required: false
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear description of the bug and expected behaviour.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Step-by-step instructions to reproduce the issue.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant Logs / Traces
+      description: Paste relevant log output or distributed trace IDs.
+      render: shell
+    validations:
+      required: false
+  - type: dropdown
+    id: flow
+    attributes:
+      label: Affected Auth Flow
+      options:
+        - Authorization Code
+        - Client Credentials
+        - Refresh Token
+        - Token Revocation
+        - Session Management
+        - MFA
+        - RBAC
+        - JWKS / Discovery
+        - Other
+    validations:
+      required: true
