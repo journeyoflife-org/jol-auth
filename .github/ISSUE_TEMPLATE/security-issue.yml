@@ -20,61 +20,40 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-name: Bug Report
-description: Report a defect or unexpected behaviour.
-labels: ["bug"]
+name: Security Issue
+description: Privately report a security vulnerability in jol-auth
+title: "[security]: "
+labels: ["security"]
 body:
   - type: markdown
     attributes:
       value: |
-        Provide sufficient detail to allow the team to reproduce and triage the issue.
-
-  - type: input
-    id: summary
-    attributes:
-      label: Summary
-      description: One-line description of the bug.
-    validations:
-      required: true
-
+        **⚠️ If this is a critical vulnerability, please follow the responsible disclosure process in SECURITY.md instead of opening a public issue.**
   - type: textarea
     id: description
     attributes:
       label: Description
-      description: Detailed description of the observed behaviour versus the expected behaviour.
+      description: Describe the security issue, including the attack scenario.
     validations:
       required: true
-
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact
+      description: What is the potential impact? (e.g. data breach, privilege escalation, DoS)
+    validations:
+      required: true
   - type: textarea
     id: reproduction
     attributes:
       label: Steps to Reproduce
-      description: Ordered list of steps to reproduce the issue.
-      placeholder: |
-        1. ...
-        2. ...
-        3. ...
+      description: Provide steps to reproduce the issue.
     validations:
       required: true
-
   - type: input
-    id: environment
+    id: cve
     attributes:
-      label: Environment
-      description: "Runtime environment (e.g. Python version, OS, deployment target)."
-      placeholder: "Python 3.12, Ubuntu 24.04"
+      label: CVE / Advisory Reference
+      description: Link to any related CVE or security advisory.
     validations:
-      required: true
-
-  - type: textarea
-    id: logs
-    attributes:
-      label: Logs and Error Output
-      description: Relevant log excerpts or stack traces. Redact any sensitive data before pasting.
-      render: text
-
-  - type: textarea
-    id: additional-context
-    attributes:
-      label: Additional Context
-      description: Screenshots, related issues, or other supporting information.
+      required: false

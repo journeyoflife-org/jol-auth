@@ -20,65 +20,57 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-name: Feature Request
-description: Propose new functionality or an enhancement.
-labels: ["enhancement"]
+name: Auth Feature Request
+description: Propose a new authentication or authorization feature
+title: "[auth-feature]: "
+labels: ["enhancement", "auth"]
 body:
   - type: markdown
     attributes:
       value: |
-        Describe the proposed feature with enough detail for the team to evaluate scope and priority.
-
-  - type: input
-    id: summary
-    attributes:
-      label: Summary
-      description: One-line description of the proposed feature.
-    validations:
-      required: true
-
+        Thanks for suggesting a feature. Please provide enough detail for the team to evaluate the proposal.
   - type: textarea
-    id: problem-statement
+    id: problem
     attributes:
       label: Problem Statement
       description: What problem does this feature solve? Who is affected?
     validations:
       required: true
-
   - type: textarea
-    id: proposed-solution
+    id: proposal
     attributes:
       label: Proposed Solution
-      description: Describe the preferred approach. Include API sketches, data models, or UI mock-ups where applicable.
+      description: Describe the proposed solution or approach.
     validations:
       required: true
-
   - type: textarea
     id: alternatives
     attributes:
       label: Alternatives Considered
-      description: Other approaches evaluated and why they were not chosen.
-
+      description: List any alternative approaches that were considered.
+    validations:
+      required: false
   - type: dropdown
-    id: gdpr-impact
+    id: area
     attributes:
-      label: GDPR Impact
-      description: Does this feature involve the processing of personal data?
+      label: Feature Area
       options:
-        - "No — no personal data involved"
-        - "Yes — requires DPIA update"
-        - "Uncertain — needs assessment"
+        - OAuth 2.0 / OIDC
+        - Multi-tenant RBAC
+        - Session Management
+        - MFA
+        - Key Management / JWKS
+        - Audit / Compliance
+        - API Design
+        - Developer Experience
+        - Other
     validations:
       required: true
-
-  - type: textarea
-    id: acceptance-criteria
+  - type: checkboxes
+    id: compliance
     attributes:
-      label: Acceptance Criteria
-      description: Measurable conditions that must be met for this feature to be considered complete.
-
-  - type: textarea
-    id: additional-context
-    attributes:
-      label: Additional Context
-      description: Links, references, mock-ups, or other supporting material.
+      label: Compliance Impact
+      options:
+        - label: This feature processes new personal data categories
+        - label: This feature introduces a new data transfer path
+        - label: A DPIA update may be required (see docs/DPIA-template.md)

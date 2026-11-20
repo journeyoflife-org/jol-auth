@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # MIT License
 #
 # Copyright (c) 2024-2026 Journey of Life
@@ -20,21 +21,33 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Smoke tests for the jol-auth package."""
+# Bootstrap the local development environment.
+set -euo pipefail
 
-import jol_auth
+echo "==> Creating virtual environment..."
+python3 -m venv .venv
+source .venv/bin/activate
 
+echo "==> Installing development dependencies..."
+pip install -e ".[dev]"
 
-def test_package_version() -> None:
-    """Verify the package exposes a version string."""
-    assert isinstance(jol_auth.__version__, str)
-    assert jol_auth.__version__ == "0.1.0"
+echo "==> Installing pre-commit hooks..."
+pre-commit install
 
+echo "==> Copying .env.example to .env (if not present)..."
+if [ ! -f .env ]; then
+    cp .env.example .env
+    echo "    .env created — please populate secrets before starting the service."
+else
+    echo "    .env already exists, skipping."
+fi
 
-def test_package_docstring() -> None:
-    """Verify the package docstring references core auth concepts."""
-    assert jol_auth.__doc__ is not None
-    doc = jol_auth.__doc__
-    assert "OAuth" in doc
-    assert "RBAC" in doc
-    assert "Journey Of Life" in doc
+echo "==> Starting Docker services..."
+docker compose up -d
+
+echo "==> Running database migrations..."
+alembic upgrade head
+
+echo ""
+echo "Bootstrap complete. Start the development server with:"
+echo "  uvicorn app.main:app --reload"
