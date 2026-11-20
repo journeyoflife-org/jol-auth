@@ -7,6 +7,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 ## [Unreleased]
 
 ### Added
+- Adopted mise: `mise.toml` + `mise.lock` pin python 3.12.16 and uv (per-platform SHA256 + GitHub attestations); CI Lint/Test/Pre-commit jobs bootstrap tools via pinned `jdx/mise-action` (were unpinned `setup-python@v5` + `pip install -e`). Job names preserved.
 
 - Repository template baseline structure.
 - GitHub Actions workflows: CI, compliance-check, and CodeQL.

@@ -41,63 +41,51 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Install mise (pinned)
+        uses: jdx/mise-action@c37c93293d6b742fc901e1406b8f764f6fb19dac  # v2
         with:
-          python-version: "3.12"
-          cache: "pip"
+          version: "2026.11.0"
 
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -e ".[dev]"
+        run: mise install && mise run deps
 
-      - name: Run Ruff linter
-        run: ruff check .
-
-      - name: Run Ruff formatter check
-        run: ruff format --check .
+      - name: Run Ruff linter and formatter check
+        run: mise run lint
 
   test:
     name: Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Install mise (pinned)
+        uses: jdx/mise-action@c37c93293d6b742fc901e1406b8f764f6fb19dac  # v2
         with:
-          python-version: "3.12"
-          cache: "pip"
+          version: "2026.11.0"
 
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -e ".[dev]"
+        run: mise install && mise run deps
 
       - name: Run tests
-        run: pytest -v --tb=short
+        run: mise run test
 
   pre-commit:
     name: Pre-commit
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Install mise (pinned)
+        uses: jdx/mise-action@c37c93293d6b742fc901e1406b8f764f6fb19dac  # v2
         with:
-          python-version: "3.12"
-          cache: "pip"
+          version: "2026.11.0"
 
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -e ".[dev]"
+        run: mise install && mise run deps
 
       - name: Run pre-commit hooks
-        uses: pre-commit/action@v3.0.1
+        run: mise run precommit

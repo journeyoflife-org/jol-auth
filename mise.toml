@@ -1,0 +1,26 @@
+[tools]
+python = "3.12"
+uv = "latest"
+
+[env]
+UV_PROJECT_ENVIRONMENT = ".venv"
+
+[tasks.deps]
+description = "Create/refresh the isolated uv virtualenv from uv.lock"
+run = "uv sync --extra dev"
+
+[tasks.lint]
+description = "Ruff lint + format check (mirrors CI Lint job)"
+run = "uv run ruff check . && uv run ruff format --check ."
+
+[tasks.test]
+description = "pytest (mirrors CI Test job)"
+run = "uv run pytest -v --tb=short"
+
+[tasks.precommit]
+description = "pre-commit run --all-files (mirrors CI Pre-commit job)"
+run = "uv run pre-commit run --all-files"
+
+[tasks.check]
+description = "Full gate set: lint + test + precommit"
+depends = ["lint", "test", "precommit"]
